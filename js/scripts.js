@@ -1,3 +1,28 @@
+const carrito = [];
+
+function agregarAlCarrito(producto){
+    //validar stock
+    //validar colores
+
+    carrito.push(producto);
+    console.log (carrito);
+}
+
+agregarAlCarrito({ id:1, name: "Triceratops", precio: 1600})
+agregarAlCarrito({ id:2, name: "Dino", precio: 1700})
+agregarAlCarrito({ id:3, name: "Hipopotas", precio: 2000})
+
+function borrarProductoDelCarrito(idDelProducto){
+    const index = carrito.findIndex((producto) => producto.id === idDelProducto);
+
+
+    if( index !== -1){
+        carrito.splice(index, 1);
+    }
+   
+    console.log(carrito);
+}
+borrarProductoDelCarrito(3);
 /*
 let ingresarNumero = parseInt(prompt('Ingresar numero'));
 
@@ -22,7 +47,7 @@ if(promedio <= 5){
 } else{
     console.log('Aprobaste, felicidades! Te sacaste un ' + promedio); 326
 }
-*/
+
 const suma  = (a,b) => a + b;
 const resta = (a,b) => a - b;
 
@@ -35,3 +60,4 @@ let nuevoPrecio = resta(suma(precioProducto, iva(precioProducto)), descuento);
 let nuevoPrecio1 = resta(suma(precioProducto1, iva(precioProducto1)), descuento); 
 
 console.log(suma(nuevoPrecio,nuevoPrecio1));
+*/

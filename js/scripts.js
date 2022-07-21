@@ -1,8 +1,6 @@
 const carrito = [];
 
 function agregarAlCarrito(producto){
-    //validar stock
-    //validar colores
 
     carrito.push(producto);
     console.log (carrito);
@@ -15,6 +13,7 @@ agregarAlCarrito({ id:3, name: "Hipopotas", precio: 2000})
 function borrarProductoDelCarrito(idDelProducto){
     const index = carrito.findIndex((producto) => producto.id === idDelProducto);
 
+    //Eliminar articulo
 
     if( index !== -1){
         carrito.splice(index, 1);
@@ -23,6 +22,48 @@ function borrarProductoDelCarrito(idDelProducto){
     console.log(carrito);
 }
 borrarProductoDelCarrito(3);
+
+//Buscador
+
+const productos = [
+    {id:1, nombre: 'Triceratops', precio:1600},
+    {id:2, nombre: 'Dino', precio:1700},
+    {id:3, nombre: 'Hipopotas', precio:2000},
+    {id:4, nombre: 'Gran Conejo', precio:2500},
+]
+
+const resultado = productos.find((el) => el.nombre === "Dino")
+const resultado2 = productos.find((el) => el.nombre === 'Principito')
+
+console.log (resultado);
+console.log (resultado2);
+
+//Filtro
+const filtro = productos.filter((el) => el.precio >= 2000)
+
+console.log (filtro);
+
+//Aumento de precio + IVA
+
+const precioMasIVA = productos.map((el) => {
+    return {
+        nombre: el.nombre, 
+        precio: el.precio * 1.21
+    }
+})
+console.log(precioMasIVA)
+
+//Valor total de mi compra
+
+const miCompra = [
+    {nombre: 'Triceratops', precio:1600},
+    {nombre: 'Hipopotas', precio:2000},
+]
+const totalDeCompra = miCompra.reduce ((ac, el)=> ac + el.precio, 0)
+console.log ('El valor a pagar es $' + totalDeCompra + ' más envío')
+
+
+
 /*
 let ingresarNumero = parseInt(prompt('Ingresar numero'));
 

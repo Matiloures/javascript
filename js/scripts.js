@@ -1,5 +1,58 @@
 const carrito = [];
 
+
+const producto = [
+    {
+        id:1, 
+        nombre: 'Triceratops', 
+        precio: 1600,
+    },
+    {
+        id:2, 
+        nombre: 'Dino', 
+        precio: 1700
+    },
+    {
+        id:3, 
+        nombre: 'Hipopotas', 
+        precio: 2000
+    },
+    {
+        id:4, 
+        nombre: 'Gran Conejo', 
+        precio: 2500
+    },
+];
+
+producto.forEach((producto) => { 
+const idButton = `add-cart${producto.id}`
+document.getElementById("seccion-card").innerHTML += `<div class="col mb-5">
+        <div class="card h-100">
+            <img class="card-img-top" src=${producto.img}/>
+            <div class="card-body p-4">
+                <div class="text-center">
+                    <h5 class="fw-bolder">${producto.nombre}</h5>
+                    <p>$${producto.precio}</p>
+                </div>
+            </div>
+            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                <div class="text-center" id="${idButton}"><a class="btn btn-outline-dark mt-auto" href="#">Agregar</a></div>
+            </div>
+        </div>
+     </div>`;
+})
+
+producto.forEach((producto) => {
+    const idButton = `add-cart${producto.id}` 
+    document.getElementById(idButton).addEventListener('click', () => {
+        alert("Agregaste "+ producto.nombre); 
+        carrito.push(producto);
+    })
+});
+
+
+/*const carrito = [];
+
 function agregarAlCarrito(producto){
 
     carrito.push(producto);

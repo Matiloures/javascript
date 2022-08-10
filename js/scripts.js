@@ -1,43 +1,46 @@
-/*const carrito = JSON.parse(localStorage.getItem('carrito')) ?? [];
-const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
-document.getElementById ('carritoTotal').innerHTML = `${carrito.length} - $${total}`;
-*/
+const carrito = JSON.parse(localStorage.getItem('carrito')) ?? [];
+document.getElementById ('carritoTotal').innerHTML = carrito.length;
 
 const producto = [
     {
         id:1, 
         nombre: 'Triceratops',
-        //img: '../img/Tricera.png',
+        categoria: 'Productos',
         category: 'Animales', 
         precio: 1600,
     },
     {
         id:2, 
         nombre: 'Dino', 
+        categoria: 'Productos',
         category: 'Animales', 
         precio: 1700
     },
     {
         id:3, 
         nombre: 'Hipopotas',
+        categoria: 'Productos',
         category: 'Animales',
         precio: 2000
     },
     {
         id:4, 
         nombre: 'Principito',
+        categoria: 'Productos',
         category: 'Personajes', 
         precio: 2500
     },
     {
         id:5, 
         nombre: 'Batman',
+        categoria: 'Productos',
         category: 'Personajes',  
         precio: 2500
     },
     {
-        id:5, 
+        id:6, 
         nombre: 'Canasta de Frutas',
+        categoria: 'Productos',
         category: 'Objetos',  
         precio: 3000
     },
@@ -45,7 +48,7 @@ const producto = [
 
 for (const nodoHTML of document.getElementsByClassName('filtrarCategorias')) {
     nodoHTML.onclick = (event) => {
-        const category = event.target.getAttribute('data-categoria')
+        const category = event.target.getAttribute('data-category')
         filtrarProductosPorCategoria(category)
     } ;
 }   
@@ -91,16 +94,14 @@ document.getElementById("seccion-card").innerHTML += `<div class="col mb-5">
         </div>
      </div>`;
 })
-
-/*
-producto.forEach((producto) => {
-    const idButton = `add-cart${producto.id}` 
+producto.forEach((producto) => { 
+    const idButton = `add-cart${producto.id}`
     document.getElementById(idButton).onclick = () => {
         carrito.push(producto);
-        document.getElementById("carritoTotal").innerHTML = `${carrito.length} - $${total}`;
-        localStorage.setItem("carrito", JSON.stringify(carrito));
-        const total = carrito.reduce((acumulador, producto) => acumulador + producto.precio, 0);
-       
-       
+        document.getElementById("carritoTotal").innerHTML = carrito.length;
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        console.log(carrito);
     }
-});*/
+})
+
+

@@ -6,6 +6,7 @@ const producto = [
         id:1, 
         nombre: 'Triceratops',
         categoria: 'Productos',
+        img: '../img/Tricera.png',
         category: 'Animales', 
         precio: 1600,
     },
@@ -81,7 +82,7 @@ producto.forEach((producto) => {
 const idButton = `add-cart${producto.id}`
 document.getElementById("seccion-card").innerHTML += `<div class="col mb-5">
         <div class="card h-100">
-            <img class="card-img-top" src=${producto.img}/>
+            <img class="card-img-top" src="../img/${producto.img}.png"/>
             <div class="card-body p-4">
                 <div class="text-center">
                     <h5 class="fw-bolder">${producto.nombre}</h5>
@@ -100,8 +101,14 @@ producto.forEach((producto) => {
         carrito.push(producto);
         document.getElementById("carritoTotal").innerHTML = carrito.length;
         localStorage.setItem('carrito', JSON.stringify(carrito));
+        Swal.fire({
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+          });
+        }
         console.log(carrito);
-    }
-})
 
+})
 

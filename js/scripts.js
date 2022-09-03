@@ -40,7 +40,22 @@ function filtrarTodosLosProductos (categoria) {
                 </div>
              </div>`;
         })
-    
+
+        producto.forEach((producto) => { 
+            const idButton = `add-cart${producto.id}`
+            document.getElementById(idButton).onclick = () => {
+                carrito.push(producto);
+                document.getElementById("carritoTotal").innerHTML = carrito.length;
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Se agrego al carrito',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }
+                console.log(carrito);
+        }) 
 }
 
 //Categorias
@@ -71,41 +86,21 @@ function filtrarProductosPorCategoria (category) {
                     </div>
                 </div>
              </div>`;
-        })
-    
+        });  
+
+        producto.forEach((producto) => { 
+            const idButton = `add-cart${producto.id}`
+            document.getElementById(idButton).onclick = () => {
+                carrito.push(producto);
+                document.getElementById("carritoTotal").innerHTML = carrito.length;
+                localStorage.setItem('carrito', JSON.stringify(carrito));
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Se agrego al carrito',
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                }
+                console.log(carrito);
+        });    
 }
-
-producto.forEach((producto) => { 
-const idButton = `add-cart${producto.id}`
-document.getElementById("seccion-card").innerHTML += `<div class="col mb-5">
-        <div class="card h-100">
-            <img class="card-img-top" src=${producto.img}>
-            <div class="card-body p-4">
-                <div class="text-center">
-                    <h5 class="fw-bolder">${producto.nombre}</h5>
-                    <p>$${producto.precio}</p>
-                </div>
-            </div>
-            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                <div class="text-center" id="${idButton}"><a class="btn btn-outline-dark mt-auto" href="#">Agregar</a></div>
-            </div>
-        </div>
-     </div>`;
-})
-
-producto.forEach((producto) => { 
-    const idButton = `add-cart${producto.id}`
-    document.getElementById(idButton).onclick = () => {
-        carrito.push(producto);
-        document.getElementById("carritoTotal").innerHTML = carrito.length;
-        localStorage.setItem('carrito', JSON.stringify(carrito));
-        Swal.fire({
-            icon: 'success',
-            title: 'Se agrego al carrito',
-            showConfirmButton: false,
-            timer: 1500
-          });
-        }
-        console.log(carrito);
-})
-
